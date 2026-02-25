@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@Rifanakbar_8 | Support</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{1000056943.jpeg
+IMG_8305.JPG
+Naruto_Shippuden_OST_-_Departure_t
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
+
+body{
+background:radial-gradient(circle at center,#0a0f1f,#000);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* PARTICLE BACKGROUND */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* CONTAINER */
+.container{
+padding:40px 20px;
+animation:fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.profile{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid #00f7ff;
+box-shadow:0 0 25px #00f7ff,0 0 60px #00f7ff;
+margin-bottom:15px;
+}
+
+h1{
+color:#00f7ff;
+text-shadow:0 0 15px #00f7ff;
+font-size:28px;
+}
+
+.bio{
+opacity:0.8;
+margin-bottom:30px;
+}
+
+/* BUTTON */
+.link-btn{
+display:block;
+margin:15px auto;
+padding:15px;
+width:90%;
+max-width:420px;
+border-radius:15px;
+border:2px solid #00f7ff;
+background:rgba(0,247,255,0.08);
+box-shadow:0 0 15px #00f7ff;
+color:white;
+text-decoration:none;
+transition:0.3s;
+font-size:16px;
+}
+
+.link-btn:hover{
+background:#00f7ff;
+color:black;
+transform:scale(1.05);
+box-shadow:0 0 40px #00f7ff;
+}
+
+.donate-btn{
+border:2px solid #00ff88;
+box-shadow:0 0 20px #00ff88;
+background:rgba(0,255,136,0.12);
+}
+
+.donate-btn:hover{
+background:#00ff88;
+color:black;
+box-shadow:0 0 50px #00ff88;
+}
+
+/* POPUP */
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.96);
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+backdrop-filter:blur(8px);
+}
+
+.popup h2{
+margin-bottom:15px;
+color:#00ff88;
+text-shadow:0 0 20px #00ff88;
+}
+
+.nominal{
+margin:8px;
+padding:12px 20px;
+border-radius:12px;
+border:2px solid #00ff88;
+background:transparent;
+color:white;
+cursor:pointer;
+box-shadow:0 0 15px #00ff88;
+transition:0.3s;
+}
+
+.nominal:hover{
+background:#00ff88;
+color:black;
+transform:scale(1.1);
+}
+
+select,input{
+margin-top:10px;
+padding:12px;
+border-radius:12px;
+border:none;
+text-align:center;
+font-size:15px;
+width:200px;
+}
+
+.qr-box img{
+width:260px;
+margin-top:20px;
+border-radius:20px;
+box-shadow:0 0 50px #00ff88;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{box-shadow:0 0 20px #00ff88;}
+to{box-shadow:0 0 60px #00ff88;}
+}
+
+.close{
+margin-top:20px;
+padding:12px 25px;
+background:#00ff88;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+font-size:16px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIK -->
+<audio id="bgMusic" autoplay loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<canvas id="particles"></canvas>
+
+<div class="container">
+<img src="profile.jpg" class="profile">
+<h1>@Rifanakbar_8</h1>
+<p class="bio">⚡ Neon Cyber Creator | Support Me</p>
+
+<a class="link-btn" href="https://wa.me/6282326931845">📱 WhatsApp</a>
+<a class="link-btn" href="https://www.instagram.com/rifanakbar_8">📸 Instagram</a>
+<a class="link-btn" href="https://tiktok.com/@the_master159">🎵 TikTok</a>
+<a class="link-btn" href="https://youtube.com/@rifanakbar15">▶️ YouTube</a>
+
+<a class="link-btn donate-btn" onclick="openDonate()">💚 DONASI SUPPORT</a>
+</div>
+
+<!-- POPUP DONASI -->
+<div class="popup" id="donatePopup">
+<h2>Support Creator 💚</h2>
+
+<select id="paymentMethod">
+<option value="gopay">GoPay</option>
+<option value="bri">BRI / QRIS</option>
+</select>
+
+<div>
+<button class="nominal" onclick="showQR(5000)">5K</button>
+<button class="nominal" onclick="showQR(10000)">10K</button>
+<button class="nominal" onclick="showQR(20000)">20K</button>
+<button class="nominal" onclick="showQR(50000)">50K</button>
+<button class="nominal" onclick="showQR(100000)">100K</button>
+</div>
+
+<input type="number" id="customAmount" placeholder="Nominal Bebas (Rp)">
+<button class="nominal" onclick="customDonate()">Kirim Nominal</button>
+
+<div class="qr-box" id="qrSection" style="display:none;">
+<h3 id="amountText"></h3>
+<img id="qrImage" src="">
+<p>Scan QR & transfer sesuai nominal</p>
+</div>
+
+<button class="close" onclick="closeDonate()">Tutup</button>
+</div>
+
+<script>
+// DONASI SYSTEM
+function openDonate(){
+document.getElementById("donatePopup").style.display="flex";
+}
+
+function closeDonate(){
+document.getElementById("donatePopup").style.display="none";
+document.getElementById("qrSection").style.display="none";
+}
+
+function showQR(amount){
+let method=document.getElementById("paymentMethod").value;
+let qr=document.getElementById("qrImage");
+
+if(method==="gopay"){
+qr.src="gopay.jpg";
+}else{
+qr.src="bri.jpg";
+}
+
+document.getElementById("amountText").innerText=
+"Transfer: Rp "+amount.toLocaleString("id-ID");
+
+document.getElementById("qrSection").style.display="block";
+}
+
+function customDonate(){
+let val=document.getElementById("customAmount").value;
+if(val){
+showQR(parseInt(val));
+}
+}
+
+// PARTICLE BACKGROUND
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray=[];
+for(let i=0;i<80;i++){
+particlesArray.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2,
+speed:Math.random()*0.5
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="#00f7ff";
+particlesArray.forEach(p=>{
+p.y+=p.speed;
+if(p.y>canvas.height)p.y=0;
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fill();
+});
+requestAnimationFrame(animate);
+}
+animate();
+
+// AUTOPLAY FIX MOBILE
+document.body.addEventListener("click",()=>{
+document.getElementById("bgMusic").play();
+},{once:true});
+</script>
+
+</body>
+</html>
